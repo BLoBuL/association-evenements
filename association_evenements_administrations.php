@@ -15,6 +15,7 @@ function association_evenements_upgrade($nom_meta_base_version, $version_cible) 
 			)),
 		),
 	);
+	$maj['1.1.0'] = $maj['create'];
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 }
 

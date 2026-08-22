@@ -5,11 +5,14 @@ $paquet = file_get_contents($racine . '/paquet.xml');
 $base = file_get_contents($racine . '/base/association_evenements.php');
 $admin = file_get_contents($racine . '/association_evenements_administrations.php');
 $erreurs = array();
-foreach (array('prefix="association_evenements"', 'nom="agenda"', 'nom="saisies"', 'nom="verifier"') as $attendu) {
+foreach (array('prefix="association_evenements"', 'schema="1.1.0"', 'nom="agenda"', 'nom="saisies"', 'nom="verifier"') as $attendu) {
 	if (strpos($paquet, $attendu) === false) $erreurs[] = 'déclaration absente: ' . $attendu;
 }
 foreach (array('spip_asso_categories_activites', 'spip_asso_activites', 'spip_asso_categories_activites_liens') as $table) {
 	if (strpos($base, $table) === false) $erreurs[] = 'table absente: ' . $table;
+}
+foreach (array('type_inscrit', 'association', 'participants_json', 'visible_in_list_members', 'notify_the_members', 'journal', 'annotation', 'condition_inscription') as $champ) {
+	if (strpos($base, "'" . $champ . "'") === false) $erreurs[] = 'champ métier absent: ' . $champ;
 }
 if (strpos($admin, 'sql_drop_table') !== false) $erreurs[] = 'désinstallation destructive';
 if (!is_file($racine . '/squelettes/evenement.html')) $erreurs[] = 'page publique événement absente';
