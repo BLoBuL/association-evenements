@@ -12,6 +12,7 @@ foreach (array('spip_asso_categories_activites', 'spip_asso_activites', 'spip_as
 	if (strpos($base, $table) === false) $erreurs[] = 'table absente: ' . $table;
 }
 if (strpos($admin, 'sql_drop_table') !== false) $erreurs[] = 'désinstallation destructive';
+if (!is_file($racine . '/squelettes/evenement.html')) $erreurs[] = 'page publique événement absente';
 if ($erreurs) {
 	fwrite(STDERR, implode("\n", $erreurs) . "\n");
 	exit(1);

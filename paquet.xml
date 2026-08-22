@@ -17,4 +17,5 @@
 
 	<pipeline nom="declarer_tables_principales" inclure="base/association_evenements.php" />
 	<pipeline nom="declarer_tables_auxiliaires" inclure="base/association_evenements.php" />
+	<chemin path="squelettes" type="public" />
 </paquet>
