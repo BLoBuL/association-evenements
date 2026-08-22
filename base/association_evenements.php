@@ -68,3 +68,10 @@ function association_evenements_declarer_tables_auxiliaires($tables) {
 	);
 	return $tables;
 }
+
+function association_evenements_declarer_tables_interfaces($interfaces) {
+	$interfaces['table_des_tables']['asso_categories_activites'] = 'asso_categories_activites';
+	$interfaces['table_des_tables']['asso_activites'] = 'asso_activites';
+	$interfaces['table_des_tables']['asso_categories_activites_liens'] = 'asso_categories_activites_liens';
+	return $interfaces;
+}
